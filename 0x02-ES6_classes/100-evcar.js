@@ -1,14 +1,16 @@
-import Car from './10-car';
+import Car from './10-car.js';
 
-export default class EVCar extends Car {
+class EVCar extends Car {
   constructor(brand, motor, color, range) {
     super(brand, motor, color);
     this._range = range;
   }
 
-  // eslint-disable-next-line
-	cloneCar() {
-    return new Car[Symbol.species]();
+  cloneCar() {
+    const { _brand, _motor, _color } = this;
+    return new Car(_brand, _motor, _color);
   }
 }
+
+export default EVCar;
 
